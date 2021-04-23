@@ -34,6 +34,7 @@ public class ConfiguracaoEmpresaActivity extends AppCompatActivity {
 
     private EditText editEmpresaNome, editEmpresaCategoria, editEmpresaTempo, editEmpresaTaxa;
     private ImageView imagemEmpresaPerfil;
+
     private String idUsuarioLogado;
     private String urlImagemSelecionada = "";
 
@@ -47,133 +48,124 @@ public class ConfiguracaoEmpresaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracao_empresa);
 
-        // Inicalizando os componentes
-        inicializaComponentes();
-
-        // Fazendo a chamada e configuração do Firebase
+        //Configurações iniciais
+        inicializarComponentes();
         storageReference = ConfiguracaoFirebase.getReferenciaStorage();
         firebaseRef = ConfiguracaoFirebase.getFirebase();
         idUsuarioLogado = UsuarioFirebase.getIdUsuario();
 
-        // Configuração da Toolbar
+        // Configurações Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Configurações");
         setSupportActionBar(toolbar);
-
-        // Para mostrar a seta de voltar para home
-        // Necessário configurar o AndroidManifests
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Configuração a imagem
-        imagemEmpresaPerfil.setOnClickListener(new View.OnClickListener(){
+        imagemEmpresaPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
-            // Acessando a galeria
-            public void onClick(View view){
+            public void onClick(View v) {
                 Intent i = new Intent(
                         Intent.ACTION_PICK,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI
                 );
-
-                if (i.resolveActivity(getPackageManager()) != null){
+                if( i.resolveActivity(getPackageManager()) != null ){
                     startActivityForResult(i, SELECAO_GALERIA);
                 }
             }
         });
 
-        // Recuperando dados da empresa
+        // Recuperar dados da empresa
         recuperarDadosEmpresa();
+
+
     }
 
-    // Recuperando os dados da empresa
-    private void recuperarDadosEmpresa() {
+    // Recuperando dados da Empresa
+    private void recuperarDadosEmpresa(){
 
-        // Acessando o nó empresas e os dados do usuário pelo id dele
         DatabaseReference empresaRef = firebaseRef
                 .child("empresas")
                 .child( idUsuarioLogado );
 
         empresaRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                // Inserindo os dados recuperados dentro dos editTexts
-                if ( dataSnapshot.getValue() != null ) {
-                    Empresa empresa = dataSnapshot.getValue( Empresa.class );
+                if( dataSnapshot.getValue() != null ){
+                    Empresa empresa = dataSnapshot.getValue(Empresa.class);
                     editEmpresaNome.setText(empresa.getNome());
                     editEmpresaCategoria.setText(empresa.getCategoria());
-                    editEmpresaTempo.setText(empresa.getTempo());
                     editEmpresaTaxa.setText(empresa.getPrecoEntrega().toString());
+                    editEmpresaTempo.setText(empresa.getTempo());
 
-                    // Recuperando a imagem
+                    // Imagem
                     urlImagemSelecionada = empresa.getUrlImagem();
-                        if ( urlImagemSelecionada != "") {
-                            Picasso.get()
-                                    .load(urlImagemSelecionada)
-                                    .into(imagemEmpresaPerfil);
-                        }
+                    if( urlImagemSelecionada != "" ){
+                        Picasso.get()
+                                .load(urlImagemSelecionada)
+                                .into(imagemEmpresaPerfil);
+                    }
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(DatabaseError databaseError) {}
         });
     }
 
-    // Validando os dados da empresa
+    // Método para validar os dados da empresa
     public void validarDadosEmpresa(View view){
 
-        // Pegando as informações digitadas pelo usuário
+        // Valida se os campos foram preenchidos
         String nome = editEmpresaNome.getText().toString();
+        String taxa = editEmpresaTaxa.getText().toString();
         String categoria = editEmpresaCategoria.getText().toString();
         String tempo = editEmpresaTempo.getText().toString();
-        String taxa = editEmpresaTaxa.getText().toString();
 
-        // VERIFICANDO SE OS DADOS FORAM INSERIDOS
-        if (!nome.isEmpty()){
-            if (!categoria.isEmpty()){
-                if (!tempo.isEmpty()){
-                    if (!taxa.isEmpty()){
+        if( !nome.isEmpty()){
+            if( !taxa.isEmpty()){
+                if( !categoria.isEmpty()){
+                    if( !tempo.isEmpty()){
 
-                        // Salvando os dados da empresa
                         Empresa empresa = new Empresa();
-                        empresa.setIdUsuario(idUsuarioLogado);
-                        empresa.setNome(nome);
+                        empresa.setIdUsuario( idUsuarioLogado );
+                        empresa.setNome( nome );
+                        empresa.setPrecoEntrega( Double.parseDouble(taxa) );
                         empresa.setCategoria(categoria);
-                        empresa.setTempo(tempo);
-                        empresa.setPrecoEntrega(Double.parseDouble(taxa)); // cast - conversão de tipos
+                        empresa.setTempo( tempo );
                         empresa.setUrlImagem( urlImagemSelecionada );
                         empresa.salvar();
                         finish();
 
                     }else{
-                        exibirMensagem("Digite a taxa de entrega!");
+                        exibirMensagem("Digite um tempo de entrega");
                     }
                 }else{
-                    exibirMensagem("Digite o tempo de entrega!");
+                    exibirMensagem("Digite uma categoria");
                 }
             }else{
-                exibirMensagem("Digite a categoria da empresa!");
+                exibirMensagem("Digite uma taxa de entrega");
             }
         }else{
-            exibirMensagem("Digite o nome da empresa!");
+            exibirMensagem("Digite um nome para a empresa");
         }
+
     }
 
-    // Mostrando as mensagens definidas acima
-    private void exibirMensagem (String texto){
-        Toast.makeText(this, texto, Toast.LENGTH_SHORT).show();
+    private void exibirMensagem(String texto){
+        Toast.makeText(this, texto, Toast.LENGTH_SHORT)
+                .show();
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK){
+        if( resultCode == RESULT_OK){
             Bitmap imagem = null;
 
             try {
-                switch (requestCode){
-                    // Selecionando a imagem na galeria
+
+                switch (requestCode) {
                     case SELECAO_GALERIA:
                         Uri localImagem = data.getData();
                         imagem = MediaStore.Images
@@ -185,35 +177,27 @@ public class ConfiguracaoEmpresaActivity extends AppCompatActivity {
                         break;
                 }
 
-                // Verifica se a imagem foi escolhida e já faz upload
-                if (imagem != null){
-                    imagemEmpresaPerfil.setImageBitmap(imagem);
+                if( imagem != null){
 
-                    // Preparando as informações da imagem selecionada
+                    imagemEmpresaPerfil.setImageBitmap( imagem );
+
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     imagem.compress(Bitmap.CompressFormat.JPEG, 70, baos);
                     byte[] dadosImagem = baos.toByteArray();
 
-                    // Configurando o Storage
-                    final StorageReference imagemRef = storageReference
+                    StorageReference imagemRef = storageReference
                             .child("imagens")
                             .child("empresas")
                             .child(idUsuarioLogado + "jpeg");
 
-                    // Retorna o objeto que irá controlar o upload
-                    UploadTask uploadTask = imagemRef.putBytes(dadosImagem);
-
-                    // Em caso de falha no upload da imagem
+                    UploadTask uploadTask = imagemRef.putBytes( dadosImagem );
                     uploadTask.addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-
-                            // Mostrando mensagem de erro para o usuário
                             Toast.makeText(ConfiguracaoEmpresaActivity.this,
-                                    "Erro ao fazer o upload da imagem",
+                                    "Erro ao fazer upload da imagem",
                                     Toast.LENGTH_SHORT).show();
                         }
-                        // Em caso de sucesso no Upload da imagem
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -224,32 +208,42 @@ public class ConfiguracaoEmpresaActivity extends AppCompatActivity {
                             // Como estamos trabalhando com as versões mais novas, precisamos
                             // utilizar o imagemRef e tbm definir como final na linha 180
                             imagemRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                               @Override
-                               public void onComplete(@NonNull Task<Uri> task) {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
                                     Uri url = task.getResult();
-                               }
+
+                                    // LEMBRETE PARA O ADRIANO:
+                                    // SEU BURRO!!!!!
+                                    // NÃO ESQUECER DE COLOCAR
+                                    // ESSA BENDITA LINHA NOVAMENTE
+                                    urlImagemSelecionada = url.toString();
+                                    // ESSA FOI PARA DESCONTRAIR...
+                                }
                             });
 
                             // Mostrando mensagem de sucesso para o usuário
                             Toast.makeText(ConfiguracaoEmpresaActivity.this,
-                                "Sucesso ao fazer upload da imagem",
-                                 Toast.LENGTH_SHORT).show();
+                                    "Sucesso ao fazer upload da imagem",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     });
+
                 }
 
-            } catch (Exception e){
+            }catch (Exception e){
                 e.printStackTrace();
             }
+
         }
+
     }
 
-    // Inicializando todos os componentes
-    private void inicializaComponentes(){
+    private void inicializarComponentes(){
         editEmpresaNome = findViewById(R.id.editEmpresaNome);
         editEmpresaCategoria = findViewById(R.id.editEmpresaCategoria);
-        editEmpresaTempo = findViewById(R.id.editEmpresaTempoEntrega);
         editEmpresaTaxa = findViewById(R.id.editEmpresaTaxaEntrega);
+        editEmpresaTempo = findViewById(R.id.editEmpresaTempoEntrega);
         imagemEmpresaPerfil = findViewById(R.id.image_perfil_empresa);
     }
+
 }

@@ -33,10 +33,11 @@ import java.util.List;
 public class EmpresaActivity extends AppCompatActivity {
 
     private FirebaseAuth autenticacao;
+    private DatabaseReference firebaseRef;
+
     private RecyclerView recyclerProdutos;
     private AdapterProduto adapterProduto;
     private List<Produto> produtos = new ArrayList<>();
-    private DatabaseReference firebaseRef;
     private String idUsuarioLogado;
 
     @Override
@@ -150,7 +151,6 @@ public class EmpresaActivity extends AppCompatActivity {
                 for (DataSnapshot ds: snapshot.getChildren()) {
                     produtos.add( ds.getValue( Produto.class ) );
                 }
-
                 adapterProduto.notifyDataSetChanged();
             }
 
