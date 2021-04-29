@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "768711536428",
-    "project_id": "ifoodnovo-59271",
-    "storage_bucket": "ifoodnovo-59271.appspot.com"
+    "project_number": "915175192595",
+    "project_id": "ifood-clo",
+    "storage_bucket": "ifood-clo.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:768711536428:android:f2570bb5ff16b8dfbb0689",
+        "mobilesdk_app_id": "1:915175192595:android:7e0e17ac849f53eb3ca7e6",
         "android_client_info": {
-          "package_name": "com.br.ifoodnovo"
+          "package_name": "com.br.ifoodclone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "768711536428-2541h1fch7m6ibi66ipqenq6so9bi7ni.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.br.ifoodnovo",
-            "certificate_hash": "9ff84e3e5b929450ca57635ec7478e8e6cab1ea2"
-          }
-        },
-        {
-          "client_id": "768711536428-c8rnmmgv1t6qqe7clfp16jigq0ihsa2h.apps.googleusercontent.com",
+          "client_id": "915175192595-7i9km37tic7p5prd5d2g4jkhdk9624ms.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCdG253_dKdpa2q9TH1K3z7POlPvJ4sOAA"
+          "current_key": "AIzaSyBJ4rYLK_lN9lpHiByRC-Py8qMqoFAjJcc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "768711536428-c8rnmmgv1t6qqe7clfp16jigq0ihsa2h.apps.googleusercontent.com",
+              "client_id": "915175192595-7i9km37tic7p5prd5d2g4jkhdk9624ms.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

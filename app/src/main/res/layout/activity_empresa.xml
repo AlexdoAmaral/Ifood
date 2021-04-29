@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.EmpresaActivity">
 
     <include
+        android:id="@+id/include"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,16 +17,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerProdutos"
+        android:id="@+id/recyclerEmpresas"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/include" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

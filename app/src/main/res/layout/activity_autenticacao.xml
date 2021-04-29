@@ -5,105 +5,110 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/vermelho_fundo"
     android:gravity="center"
-    android:padding="16dp"
+    android:padding="24dp"
+    android:background="@color/vermelho_fundo"
     tools:context=".activity.AutenticacaoActivity">
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:scaleType="fitCenter"
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="166dp"
+        android:layout_marginBottom="20dp"
         android:src="@drawable/logo" />
 
     <EditText
-        android:id="@+id/edtCadastroEmail"
+        android:id="@+id/editCadastroEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edt_custom"
         android:hint="E-mail"
-        android:inputType="textEmailAddress"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:background="@drawable/bd_edit_text"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/edtCadastroSenha"
+        android:id="@+id/editCadastroSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-2dp"
-        android:background="@drawable/edt_custom"
         android:hint="Senha"
-        android:inputType="textPassword"
-        android:padding="16dp" />
-
+        android:padding="16dp"
+        android:layout_marginTop="-2dp"
+        android:background="@drawable/bd_edit_text"
+        android:inputType="textPassword" />
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:padding="8dp"
         android:gravity="center"
         android:orientation="horizontal">
 
+
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Logar"
-            android:textColor="@color/branco"/>
+            android:textColor="@color/white"
+            android:text="Logar" />
 
         <Switch
             android:id="@+id/switchAcesso"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/white" />
 
         <TextView
-            android:layout_width="70dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Cadastrar"
-            android:textColor="@color/branco" />
-
+            android:textColor="@color/white"
+            android:text="Cadastrar" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearTipoUsuario"
-        android:layout_width="wrap_content"
+        android:id="@+id/LinearTipoUsuario"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:padding="8dp"
         android:gravity="center"
         android:visibility="gone"
         tools:visibility="visible"
         android:orientation="horizontal">
 
+
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Usuário"
-            android:textColor="@color/branco"/>
+            android:textColor="@color/white"
+            android:text="Usuário" />
 
         <Switch
-            android:id="@+id/switcTipoUsuario"
+            android:id="@+id/switchAcessoUsuario"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/white" />
 
         <TextView
-            android:layout_width="70dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Empresa"
-            android:textColor="@color/branco" />
-
+            android:textColor="@color/white"
+            android:text="empresa"/>
     </LinearLayout>
 
     <Button
         android:id="@+id/btnAcessar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Acessar"
-        android:textColor="@color/branco"
-        android:layout_marginTop="16dp"
         android:padding="16dp"
-        android:backgroundTint="@color/vermelho"/>
+        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content"
+        android:text="Acessar"/>
 
+    <TextView
+       android:onClick="recupera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esqueceu a senha?"
+        android:textColor="@color/white"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>

@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_height="wrap_content">
     <TextView
-        android:id="@+id/textNomeRefeicao"
+        android:id="@+id/textNomerefeicao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Sushi de salmão"
-        android:textColor="@color/preto"
+        android:text="Sushi de Salmão"
+        android:textColor="@color/black"
         android:textSize="18sp"
-        android:textStyle="bold" />
-
+        android:textStyle="bold"/>
     <TextView
         android:id="@+id/textDescricaoRefeicao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Salmão com nosso delicioso arroz temperado"
-        android:textSize="14sp" />
+        android:text="Salmão com  nosso delicioso arroz temperado"
+        android:textSize="14sp"/>
 
     <TextView
         android:id="@+id/textPreco"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="R$ 19.90"
+        android:layout_marginBottom="8dp"
+        android:text="R$ 18,90"
         android:textColor="@color/vermelho_fundo"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textSize="16dp"
+        android:textStyle="bold"/>
 
-    <include layout="@layout/divisor" />
+    <include layout="@layout/divisor"/>
 
 </LinearLayout>

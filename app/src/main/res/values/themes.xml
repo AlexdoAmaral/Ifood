@@ -1,14 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.IfoodNovo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.IfoodClone" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/vermelho</item>
         <item name="colorPrimaryVariant">@color/vermelho_fundo</item>
-        <item name="colorOnPrimary">@color/branco</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/vermelho</item>
         <item name="colorSecondaryVariant">@color/vermelho_fundo</item>
-        <item name="colorOnSecondary">@color/preto</item>
+        <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

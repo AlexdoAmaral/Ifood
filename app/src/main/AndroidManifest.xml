@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.br.ifoodnovo">
+    package="com.br.ifoodclone">
 
     <application
         android:allowBackup="true"
@@ -8,18 +8,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.IfoodNovo">
+        android:theme="@style/Theme.IfoodClone">
+        <activity android:name=".activity.PedidoActivity"
+            android:parentActivityName=".activity.EmpresaActivity"/>
+        <activity
+            android:name=".activity.CardapioActivity"
+            android:parentActivityName=".activity.HomeActivity" />
+        <activity
+            android:name=".activity.ConfiguracaoUsuarioActivity"
+            android:parentActivityName=".activity.HomeActivity" />
+        <activity android:name=".activity.RecuperaSenhaActivity" />
         <activity
             android:name=".activity.NovoProdutoEmpresaActivity"
             android:parentActivityName=".activity.EmpresaActivity" />
         <activity
-            android:name=".activity.ConfiguracaoEmpresaActivity"
+            android:name=".activity.ConfiguracoesEmpresaActivity"
             android:parentActivityName=".activity.EmpresaActivity" />
-        <activity
-            android:name=".activity.ConfiguracaoUsuarioActivity"
-            android:parentActivityName=".activity.HomeActivity" />
-        <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.EmpresaActivity" />
+        <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.AutenticacaoActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>

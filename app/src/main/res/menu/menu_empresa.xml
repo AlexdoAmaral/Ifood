@@ -4,16 +4,20 @@
 
     <item
         android:id="@+id/menuNovoProduto"
-        android:icon="@drawable/ic_adicionar"
-        android:title="Novo Produto"
-        app:showAsAction="always"/>
+        android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="always"
+        android:title="Novo produto" />
+    <item
+        android:id="@+id/menuPedidos"
+        android:icon="@drawable/ic_assignment"
+        app:showAsAction="always"
+        android:title="pedidos" />
     <item
         android:id="@+id/menuConfiguracoes"
-        android:title="Configurações"
-        app:showAsAction="never"/>
+        app:showAsAction="never"
+        android:title="Configurações" />
     <item
         android:id="@+id/menuSair"
-        android:title="Sair"
-        app:showAsAction="never"/>
-
+        app:showAsAction="never"
+        android:title="Sair" />
 </menu>

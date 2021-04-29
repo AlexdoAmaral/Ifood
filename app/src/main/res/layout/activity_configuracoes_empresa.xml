@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ConfiguracoesEmpresaActivity">
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+       <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imagemPerfilEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/perfil"
+            app:civ_border_color="#FF0000"
+            app:civ_border_width="2dp" />
+
+        <EditText
+            android:id="@+id/editEmpresaNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bd_edit_text"
+            android:hint="Nome da empresa"
+            android:layout_marginBottom="8dp"
+            android:inputType="text"
+            android:padding="16dp"/>
+
+        <EditText
+            android:id="@+id/editEmpresaCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bd_edit_text"
+            android:hint="Categoria"
+            android:layout_marginBottom="8dp"
+            android:inputType="text"
+            android:padding="16dp"/>
+
+        <EditText
+            android:id="@+id/editEmpresaTempoEntrega"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bd_edit_text"
+            android:hint="Tempo de entrega"
+            android:layout_marginBottom="8dp"
+            android:inputType="text"
+            android:padding="16dp"/>
+        <EditText
+            android:id="@+id/editEmpresaTaxaEntrega"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bd_edit_text"
+            android:hint="Taxa de entrega"
+            android:layout_marginBottom="8dp"
+            android:inputType="text"
+            android:padding="16dp"/>
+
+        <Button
+            android:id="@+id/btnSalvar"
+            android:onClick="validarDadosEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Salvar" />
+
+
+    </LinearLayout>
+</LinearLayout>

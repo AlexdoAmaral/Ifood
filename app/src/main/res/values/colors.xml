@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="vermelho">#A50A15</color>
-    <color name="vermelho_dois">#870912</color>
+    <color name="vermelho_escuro">#870912</color>
     <color name="vermelho_fundo">#ea1d2c</color>
-    <color name="preto">#FF000000</color>
-    <color name="branco">#FFFFFFFF</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>

@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context=".activity.NovoProdutoEmpresaActivity">
 
     <include
@@ -18,11 +18,12 @@
         android:padding="16dp"
         android:orientation="vertical">
 
+
         <EditText
             android:id="@+id/editProdutoNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edt_custom"
+            android:background="@drawable/bd_edit_text"
             android:hint="Nome"
             android:layout_marginBottom="8dp"
             android:inputType="text"
@@ -32,7 +33,7 @@
             android:id="@+id/editProdutoDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edt_custom"
+            android:background="@drawable/bd_edit_text"
             android:hint="Descrição"
             android:layout_marginBottom="8dp"
             android:inputType="text"
@@ -42,21 +43,22 @@
             android:id="@+id/editProdutoPreco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edt_custom"
-            android:hint="Preço"
+            android:background="@drawable/bd_edit_text"
+            android:hint="preço"
             android:layout_marginBottom="8dp"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             android:padding="16dp"/>
 
+
         <Button
-            android:id="@+id/btnSalvar"
+            android:id="@+id/btnSalvarprodutos"
+            android:onClick="validarDadosProduto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:onClick="validarDadosProduto"
-            android:backgroundTint="@color/vermelho"
-            android:textColor="@color/branco"
-            android:text="Salvar"/>
+            android:text="Salvar" />
+
 
     </LinearLayout>
+
 </LinearLayout>
